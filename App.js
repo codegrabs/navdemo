@@ -19,6 +19,10 @@ import {
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import Login from './src/Login/Login';
+import { Provider } from 'react-redux';
+import store from './src/store';
+import Details from './src/Details';
 
 const AuthStack = createStackNavigator();
 
@@ -61,24 +65,6 @@ const Profile = props => (
   </View>
 );
 
-const Login = props => (
-  <View>
-    <Text>Login</Text>
-    <Button
-      title="Go to Signup"
-      onPress={() => {
-        props.navigation.navigate('Signup');
-      }}
-    />
-
-    <Button
-      title="Login"
-      onPress={() => {
-        props.navigation.navigate('Home');
-      }}
-    />
-  </View>
-);
 
 const Signup = () => (
   <View>
@@ -89,11 +75,13 @@ const Signup = () => (
 const App: () => React$Node = () => {
   let isLogin = false;
   return (
-    <NavigationContainer>
+    <Provider store={store}>
+          <NavigationContainer>
       {!isLogin ? (
         <AuthStack.Navigator>
           <AuthStack.Screen name="Login" component={Login} />
           <AuthStack.Screen name="Signup" component={Signup} />
+          <AuthStack.Screen name="Details" component={Details} />
         </AuthStack.Navigator>
       ) : (
         <HomeStack.Navigator>
@@ -102,6 +90,7 @@ const App: () => React$Node = () => {
         </HomeStack.Navigator>
       )}
     </NavigationContainer>
+    </Provider>
   );
 };
 
