@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View , Button } from 'react-native';
+import { Text, View , Button, AsyncStorage } from 'react-native';
 import {connect} from "react-redux";
 
 class Login extends Component{
@@ -26,39 +26,37 @@ class Login extends Component{
         // this.setState({milk:this.state.milk-1})
     }
 
+    loginMe=()=>{
+        this.props.make_login();
+        AsyncStorage.setItem('islogin','1').then(v=>{
+            console.log('v: ',v);
+        // this.props.navigation.navigate("Home");
+            
+        }).catch(err=>console.error('err: ',err)
+        )
+    }
+
     render(){
         return (
 
             <View>
-                <Text>Milk process {this.props.milk}</Text>
-                <Button title="ADD MILK" onPress={this.addMilk} />
-                <Button title="REMOVE MILK" onPress={this.removeMilk} />
-
-                <Text>Curd process {this.props.curd}</Text>
-                <Button title="ADD Curd" onPress={this.addCurd} />
-                <Button title="REMOVE Curd" onPress={this.removeCurd} />
-                <Button title="Clear Curd" onPress={()=>{this.props.clear_curd()}} />
-
-
-                <Button title="Go to details page" onPress={()=>{
-                    this.props.navigation.navigate("Details")
-                }} />
+                <Button title="Login" onPress={this.loginMe} />
             </View>
         );
     }
 }
 
 const mapStateToProps=(state)=>({
-    milk:state.milk,
-    curd:state.curd
+    islogin:state.islogin
 })
 
 const mapDispatchToProps=(dispatch)=>({
-    add_milk:(value)=>dispatch({type:'add_milk'}),
-    remove_milk:(value)=>dispatch({type:'remove_milk'}),
-    add_curd:(value)=>dispatch({type:'add_curd',value:value}),
-    remove_curd:(value)=>dispatch({type:'remove_curd'}),
-    clear_curd:(value)=>dispatch({type:'clean_curd'}),
+    make_login:(value)=>dispatch({type:'make_login'}),
+    // add_milk:(value)=>dispatch({type:'add_milk'}),
+    // remove_milk:(value)=>dispatch({type:'remove_milk'}),
+    // add_curd:(value)=>dispatch({type:'add_curd',value:value}),
+    // remove_curd:(value)=>dispatch({type:'remove_curd'}),
+    // clear_curd:(value)=>dispatch({type:'clean_curd'}),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Login);
