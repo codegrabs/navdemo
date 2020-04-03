@@ -10,6 +10,7 @@ import Profile from '../views/Profile';
 import Signup from '../views/Signup';
 import {AsyncStorage,ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
+import Starter from '../views/Starter';
 
 
 const AuthStack = createStackNavigator();
@@ -23,7 +24,7 @@ const HomeStack = createStackNavigator();
 // )
 
 const HomeStackNav = () => (
-  <HomeStack.Navigator>
+  <HomeStack.Navigator screenOptions={{ headerShown:false }} >
     <HomeStack.Screen name="Home" component={Home} />
     <HomeStack.Screen name="Profile" component={Profile} />
     <HomeStack.Screen name="Details" component={Details} />
@@ -32,7 +33,13 @@ const HomeStackNav = () => (
 
 const AuthStackNav = () => (
   <AuthStack.Navigator>
-    <AuthStack.Screen name="Login" component={Login} />
+     <AuthStack.Screen name="Starter" component={Starter}
+    options={{ headerShown:false }}
+    />
+    
+    <AuthStack.Screen name="Login" component={Login}
+    options={{ headerShown:false }}
+    />
     <AuthStack.Screen name="Signup" component={Signup} />
   </AuthStack.Navigator>
 );
@@ -42,13 +49,12 @@ const Nav = props => {
   AsyncStorage.getItem('islogin')
     .then(v => {
       isLogin = true;
-      console.log('islogin: ', v);
+      // console.log('islogin: ', v);
       if (v == 1) {
         props.make_login();
         // console.log('check isLogin: ', isLogin);
       }else{
-      console.log('else islogin: ', v);
-
+      // console.log('else islogin: ', v);
           props.make_logout(false);
       }
 

@@ -4,6 +4,14 @@ import { Text, View , Button } from 'react-native';
 
 const Profile = props => (
     <View>
+
+<Button
+        title="Go Back"
+        onPress={() => {
+          props.navigation.goBack();
+        }}
+      />
+
       <Text>
         {props.route.params
           ? props.route.params.name == 'Recommended'
