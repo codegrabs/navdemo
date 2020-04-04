@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import milk from "./milk";
 import islogin from "./islogin";
+import showSplash from "./showSplash";
 
   function curd(state = 0, action) {
     switch (action.type) {
@@ -19,4 +20,5 @@ import islogin from "./islogin";
     milk,//add_milk,remove_milk
     curd,//add_milk,remove_milk
     islogin,
+    showSplash
   })

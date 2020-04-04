@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, SafeAreaView,StyleSheet, Button } from 'react-native';
 import Swiper from 'react-native-swiper'
-
+import LottieView from 'lottie-react-native';
 export default class Starter extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,11 @@ export default class Starter extends Component {
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
         <View style={styles.slide1}>
-          <Text style={styles.text}>Hello Swiper</Text>
+        {/* <LottieView
+        autoPlay
+        source={require('../../assets/lottie/loader.json')}
+      /> */}
+          <Text style={styles.text}>welcome</Text>
         </View>
         <View style={styles.slide2}>
           <Text style={styles.text}>Beautiful</Text>

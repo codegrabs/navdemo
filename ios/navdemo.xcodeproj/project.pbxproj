@@ -19,6 +19,7 @@
 		2FEBAD9E4160CA1D25D9647E /* libPods-navdemo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0DC371F72AD1B81619A6E3 /* libPods-navdemo-tvOS.a */; };
 		4075792D9792B4B921238DD6 /* libPods-navdemo-navdemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 478787AC7DA833C50D5D48D8 /* libPods-navdemo-navdemoTests.a */; };
 		71A357B898A883F7A52230DF /* libPods-navdemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 718FD2950F47C147743BF054 /* libPods-navdemo.a */; };
+		A5E3F0AD243827720061992A /* lottie-solved.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E3F0AC243827720061992A /* lottie-solved.swift */; };
 		BEC842FE3AFAEA47A1398978 /* libPods-navdemo-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A45D09B4818413324DD8A276 /* libPods-navdemo-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		77C3773FA79700634CE97CF1 /* Pods-navdemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-navdemo.debug.xcconfig"; path = "Target Support Files/Pods-navdemo/Pods-navdemo.debug.xcconfig"; sourceTree = "<group>"; };
 		9C0DC371F72AD1B81619A6E3 /* libPods-navdemo-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-navdemo-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A45D09B4818413324DD8A276 /* libPods-navdemo-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-navdemo-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5E3F0AB243827710061992A /* navdemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "navdemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		A5E3F0AC243827720061992A /* lottie-solved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lottie-solved.swift"; sourceTree = "<group>"; };
 		A60BD275D1AE098762F333E6 /* Pods-navdemo-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-navdemo-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-navdemo-tvOSTests/Pods-navdemo-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		C65DA2AC52988DBC89DB5F98 /* Pods-navdemo-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-navdemo-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-navdemo-tvOSTests/Pods-navdemo-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -132,6 +135,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A5E3F0AC243827720061992A /* lottie-solved.swift */,
+				A5E3F0AB243827710061992A /* navdemo-Bridging-Header.h */,
 			);
 			name = navdemo;
 			sourceTree = "<group>";
@@ -194,7 +199,6 @@
 				C65DA2AC52988DBC89DB5F98 /* Pods-navdemo-tvOSTests.debug.xcconfig */,
 				A60BD275D1AE098762F333E6 /* Pods-navdemo-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -292,7 +296,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1110;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -531,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				A5E3F0AD243827720061992A /* lottie-solved.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +589,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EDFCAB769D0E9F9071FB10CF /* Pods-navdemo-navdemoTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -607,6 +613,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43B86B0F42B735D8CDF60D15 /* Pods-navdemo-navdemoTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = navdemoTests/Info.plist;
@@ -644,6 +651,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = navdemo;
+				SWIFT_OBJC_BRIDGING_HEADER = "navdemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -666,6 +674,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = navdemo;
+				SWIFT_OBJC_BRIDGING_HEADER = "navdemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

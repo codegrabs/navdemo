@@ -11,11 +11,22 @@ import Signup from '../views/Signup';
 import {AsyncStorage,ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
 import Starter from '../views/Starter';
+import SplashScreen from '../views/SplashScreen';
 
 
 const AuthStack = createStackNavigator();
 
 const HomeStack = createStackNavigator();
+const SplachStack = createStackNavigator();
+
+const SplachStackNav = () => (
+  <NavigationContainer>
+  <SplachStack.Navigator screenOptions={{ headerShown:false }} >
+    <SplachStack.Screen name="SplashScreen" component={SplashScreen} />
+  </SplachStack.Navigator>
+  </NavigationContainer>
+);
+
 
 // const LoaderStack = createStackNavigator();
 
@@ -43,26 +54,11 @@ const AuthStackNav = () => (
     <AuthStack.Screen name="Signup" component={Signup} />
   </AuthStack.Navigator>
 );
-let isLogin = false;
 
 const Nav = props => {
-  AsyncStorage.getItem('islogin')
-    .then(v => {
-      isLogin = true;
-      // console.log('islogin: ', v);
-      if (v == 1) {
-        props.make_login();
-        // console.log('check isLogin: ', isLogin);
-      }else{
-      // console.log('else islogin: ', v);
-          props.make_logout(false);
-      }
-
-    })
-    .catch(err => console.error('login err: ', err));
-console.log('isLogin: ',isLogin);
-if(!isLogin){
-  return <ActivityIndicator size="large" color="red" />
+  
+if(props.showSplash){
+  return <SplachStackNav />
 }
   return (
     <NavigationContainer>
@@ -72,6 +68,7 @@ if(!isLogin){
 };
 const mapStateToProps = state => ({
   islogin: state.islogin,
+  showSplash:state.showSplash
 });
 
 const mapDispatchToProps=(dispatch)=>({
