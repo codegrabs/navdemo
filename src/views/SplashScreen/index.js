@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, SafeAreaView,AsyncStorage } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { connect } from 'react-redux';
-
+import SplashScreenRn from 'react-native-splash-screen';
  class SplashScreen extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
     };
   }
 componentDidMount(){
+  // Do stuff and hide the splash when you want
+  SplashScreenRn.hide();
     AsyncStorage.getItem('islogin')
     .then(v => {
     //   isLogin = true;
