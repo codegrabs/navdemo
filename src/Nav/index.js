@@ -12,6 +12,7 @@ import {AsyncStorage,ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
 import Starter from '../views/Starter';
 import SplashScreen from '../views/SplashScreen';
+import NewLogin from '../views/NewLogin/NewLogin';
 
 
 const AuthStack = createStackNavigator();

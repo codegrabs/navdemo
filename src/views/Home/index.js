@@ -236,6 +236,23 @@ const List=[
     }
   }
 ];
+
+const MyList=React.memo((props)=>{
+  console.log('Mylist: ',props);
+
+  return <TouchableOpacity >
+  <Animatable.View style={{backgroundColor:'pink',margin:10,padding:10}} delay={props.index>10?0:props.index*100}
+  duration={400}
+  useNativeDriver={true}
+  animation="fadeInRightBig"
+  >
+  <Text  
+ style={{fontSize:20,fontWeight:'bold'}}
+ >{props.name}</Text>
+  </Animatable.View>
+</TouchableOpacity>
+})
+
 class Home extends Component {
   constructor(props){
     super(props);
@@ -246,13 +263,16 @@ class Home extends Component {
   componentDidMount(){
       console.log('componentDidMount');
 
+      setInterval(() => {
+  this.setState({counter:this.state.counter+1});
+        
+      }, 2000);
        this.unsubscribeDidFocus = this.props.navigation.addListener('focus',this.didFocus);
 
        this.unsubscribeDidBlur = this.props.navigation.addListener('blur',this.didBlur);
   }
 didFocus=() => {
   console.log('didFocus');
-  this.setState({counter:this.state.counter+1});
   // Screen was focused
   // Do something
 }
@@ -304,17 +324,7 @@ style={{width:300,height:200}}
  
         <View>
           {List.map((item,index)=>{
-           return <TouchableOpacity >
-             <Animatable.View style={{backgroundColor:'pink',margin:10,padding:10}} delay={index>10?0:index*100}
-             duration={400}
-             useNativeDriver={true}
-             animation="fadeInRightBig"
-             >
-             <Text  
-            style={{fontSize:20,fontWeight:'bold'}}
-            >{item.name}</Text>
-             </Animatable.View>
-          </TouchableOpacity>
+           return <MyList name={item.name} index={index} key={index} />
           })}
         </View>
 
